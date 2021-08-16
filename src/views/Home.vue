@@ -25,8 +25,8 @@
                 :key="stories.id"
                 :stories = "stories"
             />
-            <van-divider>
-              {{latest.date}}
+            <van-divider content-position="left">
+              {{today}}
             </van-divider>
           </div>
 
@@ -45,7 +45,7 @@ export default {
   },
   data(){
     return{
-      today: dayjs().format('M月DD|'),
+      today: dayjs().format('M月DD日'),
       amPm: dayjs().format('A') === 'AM' ? '上午好' : '下午好',
       latest: {},
     }
