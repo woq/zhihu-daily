@@ -23,9 +23,11 @@
             <homeArticle
                 v-for="stories in latest.stories"
                 :key="stories.id"
-                v-bind:stories = "stories"
+                :stories = "stories"
             ></homeArticle>
-            <van-divider>{{latest.date}}</van-divider>
+            <van-divider>
+              {{latest.date}}
+            </van-divider>
           </div>
 
   </div>
