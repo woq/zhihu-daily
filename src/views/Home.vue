@@ -25,6 +25,7 @@
                 :key="stories.id"
                 v-bind:stories = "stories"
             ></homeArticle>
+            <van-divider v-text="today"></van-divider>
           </div>
 
   </div>
