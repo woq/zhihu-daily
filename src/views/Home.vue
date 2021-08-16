@@ -24,7 +24,7 @@
                 v-for="stories in latest.stories"
                 :key="stories.id"
                 :stories = "stories"
-            ></homeArticle>
+            />
             <van-divider>
               {{latest.date}}
             </van-divider>
