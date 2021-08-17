@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-          <span v-text="today"></span><span v-text="amPm"></span><span class="avatar">User</span>
+          <span v-text="today"></span><span v-text="greeting"></span><span class="avatar">User</span>
           <div class="swipeTopStories" style="display:flex;justify-content:center">
             <van-swipe
                 class="my-swipe"
@@ -19,16 +19,24 @@
               </van-swipe-item>
             </van-swipe>
           </div>
-          <div class="articles">
-            <homeArticle
-                v-for="stories in latest.stories"
-                :key="stories.id"
-                :stories = "stories"
-            />
-            <van-divider content-position="left">
-              {{today}}
-            </van-divider>
-          </div>
+
+          <van-list
+              v-model="loading"
+              :finished="finished"
+              finished-text="没有更多了"
+              @load="onLoad"
+          >
+            <div class="articles">
+              <homeArticle
+                  v-for="story in stories"
+                  :key="story.id"
+                  :stories = "story"
+              />
+              <van-divider content-position="left">
+                {{today}}
+              </van-divider>
+            </div>
+          </van-list>
 
   </div>
 </template>
@@ -45,9 +53,14 @@ export default {
   },
   data(){
     return{
-      today: dayjs().format('M月DD日'),
-      amPm: dayjs().format('A') === 'AM' ? '上午好' : '下午好',
+      today: dayjs().format('M月D日 dddd '),
+      greeting: dayjs().format('A') === 'AM' ? '上午好 ' : '下午好 ',
       latest: {},
+      stories: {},
+      loading: false,
+      finished: false,
+      before: 1,
+      testObject: {},
     }
   },
   mounted() {
@@ -57,13 +70,19 @@ export default {
     getLast(){
       api.getStoriesLast().then((res) => {
         this.latest = res.data;
-        // this.today = res.data.date;
-        // this.storiesMore.push(res.data.stories)
+        this.stories = res.data.stories;
       })
     },
-    alertSome(text){
-      alert(text);
-    }
+    onLoad() {
+      api.getStoriesByDate(Number(dayjs(dayjs().subtract(this.before, 'day')).format('YYYYMMDD'))).then((res) => {
+
+        for (let stories in res.data.stories){
+          this.stories.push(res.data.stories[stories]);
+        }
+        this.before += 1;
+        this.loading = false;
+      })
+    },
     // getDate(date){
     //   api.getStoriesByDate(date).then((res) => {
     //     this.storiesMore.push(res.data.stories)

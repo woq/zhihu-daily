@@ -2,7 +2,7 @@ import axios from 'axios'
 const api = {
     Root: "https://daily.evetry.xyz/api/4",
     StoriesLast: "/stories/latest",
-    StoriesByDate: "/stories/",
+    StoriesByDate: "/stories/before/",
     StoryByID: "/story/",
     StoryInfoByID: "/story-extra/",
 }
