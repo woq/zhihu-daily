@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import api from './../api/index.js';
 export default {
   name: "home-article",
   props:{
@@ -18,6 +19,9 @@ export default {
     goStoryByID(id){
       this.$router.push({
         path: `/story/${id}`,
+        params: {
+          story: api.getStoryByID(id)
+        }
       })
     }
   }

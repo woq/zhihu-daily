@@ -1,5 +1,5 @@
 <template>
-  <div class="storyMaintain" v-html="story">
+  <div class="storyMaintain" v-html="this.story.body">
     wtf
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default {
   name: "Story",
   props: {
-    story: String
+    story: Object,
   }
 }
 </script>
