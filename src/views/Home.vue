@@ -32,10 +32,10 @@
                   :key="story.id"
                   :stories = "story"
               />
-              <van-divider content-position="left">
-                {{today}}
-              </van-divider>
             </div>
+            <van-divider content-position="left">
+              {{today}}
+            </van-divider>
           </van-list>
 
   </div>
@@ -83,10 +83,6 @@ export default {
         this.loading = false;
       })
     },
-    // getDate(date){
-    //   api.getStoriesByDate(date).then((res) => {
-    //     this.storiesMore.push(res.data.stories)
-    //   })},
   }
 }
 </script>
