@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["story"],{"095a":function(t,n,s){"use strict";s.r(n);var r=function(){var t=this,n=t.$createElement,s=t._self._c||n;return s("div",{staticClass:"storyMaintain",domProps:{innerHTML:t._s(t.story)}},[t._v(" wtf ")])},e=[],o={name:"Story",props:{story:String}},a=o,i=s("2877"),c=Object(i["a"])(a,r,e,!1,null,"120efe80",null);n["default"]=c.exports}}]);
-//# sourceMappingURL=story.aca429e2.js.map
